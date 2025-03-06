@@ -44,12 +44,30 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
       
       networking.hostName = "paradiso";
+      system.defaults.menuExtraClock.Show24Hour = true;
+      system.defaults.controlcenter.BatteryShowPercentage = true;
+
+      # Dock settings
+      system.defaults.dock.autohide = true;
+      # Nix version of this command: defaults write com.apple.dock autohide-time-modifier -float 0.15; killall Dock
+      system.defaults.dock.autohide-time-modifier = 0.15;
+
+      # Finder settings
+      system.defaults.finder.ShowPathbar = true;
+      system.defaults.finder.ShowStatusBar = true;
+      ## Show folders before other files when sorting by name
+      system.defaults.finder._FXSortFoldersFirst = true;
+      ## Hide desktop icons
+      system.defaults.finder.CreateDesktop = false;
+      ## Set default search scope to current folder
+      system.defaults.finder.FXDefaultSearchScope = "SCcf";
+      ## Remove trash after 30 days
+      system.defaults.finder.FXRemoveOldTrashItems = true;
+      ## Set Finder to column view default
+      system.defaults.finder.FXPreferredViewStyle = "clmv";
+
+      # Other misc preferences
       system.defaults.CustomUserPreferences = {
-        # Remove dock auto hide delay
-        # Nix version of this command: defaults write com.apple.dock autohide-time-modifier -float 0.15; killall Dock
-        "com.apple.dock" = {
-          "autohide-time-modifier" = 0.15;
-        };
         # Screenshots to /tmp
         "com.apple.screencapture" = {
           location = "/private/tmp";
