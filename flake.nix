@@ -28,7 +28,7 @@
         onActivation.cleanup = "zap";
         taps = [];
         brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" ];
-        casks = [ "kitty" "mpv" ];
+        casks = [ "kitty" "mpv" "nikitabobko/tap/aerospace" ];
       };
 
       # User shell
