@@ -17,6 +17,7 @@
       # Install system packages
       environment.systemPackages = [
         pkgs.vim
+        pkgs.tmux
       ];
 
       # Enable NixVim
@@ -27,8 +28,8 @@
         enable = true;
         onActivation.cleanup = "zap";
         taps = [];
-        brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" ];
-        casks = [ "kitty" "mpv" "nikitabobko/tap/aerospace" ];
+        brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" ];
+        casks = [ "kitty" "mpv" "nikitabobko/tap/aerospace" "gimp" ];
       };
 
       # User shell
