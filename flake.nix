@@ -17,6 +17,8 @@
       # Install system packages
       environment.systemPackages = [
         pkgs.vim
+        pkgs.rclone
+        pkgs.tmux
       ];
 
       # Enable NixVim
@@ -27,12 +29,12 @@
         enable = true;
         onActivation.cleanup = "zap";
         taps = [];
-        brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" ];
-        casks = [ "kitty" "mpv" "nikitabobko/tap/aerospace" ];
+        brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "ncdu" "p7zip" ];
+        casks = [ "kitty" "mpv" "nikitabobko/tap/aerospace" "keepassxc" "element" "karabiner-elements" "macfuse" "gimp" "chromium" "orbstack" ];
       };
 
       # User shell
-      users.users."neon".shell = pkgs.bashInteractive;
+      users.users."xue".shell = pkgs.bashInteractive;
 
       # Enable flakes
       nix.settings.experimental-features = "nix-command flakes";
@@ -43,14 +45,14 @@
       nix.enable = false;
       nixpkgs.hostPlatform = "aarch64-darwin";
       
-      networking.hostName = "paradiso";
+      networking.hostName = "synnax";
       system.defaults.menuExtraClock.Show24Hour = true;
       system.defaults.controlcenter.BatteryShowPercentage = true;
 
       # Dock settings
       system.defaults.dock.autohide = true;
-      # Nix version of this command: defaults write com.apple.dock autohide-time-modifier -float 0.15; killall Dock
-      system.defaults.dock.autohide-time-modifier = 0.15;
+      # Nix version of this command: defaults write com.apple.dock autohide-delay -float 0; killall Dock
+      #system.defaults.dock.autohide-delay = 0;
 
       # Finder settings
       system.defaults.finder.ShowPathbar = true;
@@ -83,6 +85,12 @@
   in
   {
     darwinConfigurations."paradiso" = nix-darwin.lib.darwinSystem {
+      modules = [
+        configuration
+        nixvim.nixDarwinModules.nixvim # Import NixVim module
+      ];
+    };
+    darwinConfigurations."synnax" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
         nixvim.nixDarwinModules.nixvim # Import NixVim module
