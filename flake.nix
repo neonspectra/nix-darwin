@@ -28,8 +28,8 @@
         enable = true;
         onActivation.cleanup = "zap";
         taps = [];
-        brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" ];
-        casks = [ "kitty" "mpv" "nikitabobko/tap/aerospace" "gimp" ];
+        brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" "koekeishiya/formulae/yabai" "koekeishiya/formulae/skhd" ];
+        casks = [ "kitty" "mpv" "gimp" ];
       };
 
       # User shell
