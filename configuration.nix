@@ -1,11 +1,6 @@
 { pkgs, ... }: {
   imports = [ ./nixvim ];
 
-  environment.systemPackages = [
-    pkgs.vim
-    pkgs.tmux
-  ];
-
   programs.nixvim.enable = true;
 
   nix.settings.experimental-features = "nix-command flakes";

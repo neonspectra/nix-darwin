@@ -24,6 +24,13 @@
         nixvim.nixDarwinModules.nixvim # Import NixVim module
       ];
     };
+    darwinConfigurations."synnax" = nix-darwin.lib.darwinSystem {
+      modules = [
+        configuration
+        gehenna
+        nixvim.nixDarwinModules.nixvim # Import NixVim module
+      ];
+    };
     darwinConfigurations."gehenna" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
