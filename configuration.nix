@@ -23,10 +23,15 @@
   system.defaults.finder = {
     ShowPathbar = true;
     ShowStatusBar = true;
+    ## Show folders before other files when sorting by name
     _FXSortFoldersFirst = true;
+    ## Hide desktop icons
     CreateDesktop = false;
+    ## Set default search scope to current folder
     FXDefaultSearchScope = "SCcf";
+    ## Remove trash after 30 days
     FXRemoveOldTrashItems = true;
+    ## Set Finder to column view default
     FXPreferredViewStyle = "clmv";
   };
   
