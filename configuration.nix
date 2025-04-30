@@ -4,7 +4,7 @@
   nix.settings.experimental-features = "nix-command flakes";
   system.configurationRevision = null; # Will be set from flake
   system.stateVersion = 5;
-  nix.enable = false; # We are using determinate nix, so we want this false
+  nix.enable = false; # Determinate Nix needs false so it manages system
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Use nvim configuration from nixvim module
