@@ -12,80 +12,22 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nixvim }:
   let
-    configuration = { pkgs, ... }: {
-      imports = [ ./nixvim ];
-      # Install system packages
-      environment.systemPackages = [
-        pkgs.vim
-        pkgs.tmux
-      ];
-
-      # Enable NixVim
-      programs.nixvim.enable = true;
-
-      # Homebrew setup
-      homebrew = {
-        enable = true;
-        onActivation.cleanup = "zap";
-        taps = [];
-        brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" "koekeishiya/formulae/yabai" "koekeishiya/formulae/skhd" ];
-        casks = [ "kitty" "mpv" "gimp" ];
-      };
-
-      # User shell
-      users.users."neon".shell = pkgs.bashInteractive;
-
-      # Enable flakes
-      nix.settings.experimental-features = "nix-command flakes";
-
-      # Darwin system settings
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-      system.stateVersion = 5;
-      nix.enable = false;
-      nixpkgs.hostPlatform = "aarch64-darwin";
-      
-      networking.hostName = "paradiso";
-      system.defaults.menuExtraClock.Show24Hour = true;
-      system.defaults.controlcenter.BatteryShowPercentage = true;
-
-      # Dock settings
-      system.defaults.dock.autohide = true;
-      # Nix version of this command: defaults write com.apple.dock autohide-time-modifier -float 0.15; killall Dock
-      system.defaults.dock.autohide-time-modifier = 0.15;
-
-      # Finder settings
-      system.defaults.finder.ShowPathbar = true;
-      system.defaults.finder.ShowStatusBar = true;
-      ## Show folders before other files when sorting by name
-      system.defaults.finder._FXSortFoldersFirst = true;
-      ## Hide desktop icons
-      system.defaults.finder.CreateDesktop = false;
-      ## Set default search scope to current folder
-      system.defaults.finder.FXDefaultSearchScope = "SCcf";
-      ## Remove trash after 30 days
-      system.defaults.finder.FXRemoveOldTrashItems = true;
-      ## Set Finder to column view default
-      system.defaults.finder.FXPreferredViewStyle = "clmv";
-
-      # Other misc preferences
-      system.defaults.CustomUserPreferences = {
-        # Screenshots to /tmp
-        "com.apple.screencapture" = {
-          location = "/private/tmp";
-          type = "png";
-        };
-        # Disable pinentry save to keychain
-        "org.gpgtools.common" = {
-          "UseKeychain" = "NO";
-        };
-      };
-
-    };
+    configuration = import ./configuration.nix;
+    paradiso = import ./systems/paradiso.nix;
+    gehenna = import ./systems/gehenna.nix;
   in
   {
     darwinConfigurations."paradiso" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
+        paradiso
+        nixvim.nixDarwinModules.nixvim # Import NixVim module
+      ];
+    };
+    darwinConfigurations."gehenna" = nix-darwin.lib.darwinSystem {
+      modules = [
+        configuration
+        gehenna
         nixvim.nixDarwinModules.nixvim # Import NixVim module
       ];
     };
