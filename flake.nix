@@ -15,6 +15,7 @@
     configuration = import ./configuration.nix;
     paradiso = import ./systems/paradiso.nix;
     gehenna = import ./systems/gehenna.nix;
+    synnax = import ./systems/synnax.nix;
   in
   {
     darwinConfigurations."paradiso" = nix-darwin.lib.darwinSystem {
