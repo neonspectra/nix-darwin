@@ -15,20 +15,12 @@
     configuration = import ./configuration.nix;
     paradiso = import ./systems/paradiso.nix;
     gehenna = import ./systems/gehenna.nix;
-    synnax = import ./systems/synnax.nix;
   in
   {
     darwinConfigurations."paradiso" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
         paradiso
-        nixvim.nixDarwinModules.nixvim # Import NixVim module
-      ];
-    };
-    darwinConfigurations."synnax" = nix-darwin.lib.darwinSystem {
-      modules = [
-        configuration
-        synnax
         nixvim.nixDarwinModules.nixvim # Import NixVim module
       ];
     };
