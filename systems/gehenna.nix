@@ -12,8 +12,8 @@
     enable = true;
     onActivation.cleanup = "zap";
     taps = [ "koekeishiya/formulae" ]; # koekeishiya tap needed for yabai and skhd
-    brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" "yabai" "skhd" ];
-    casks = [ "kitty" "mpv" "gimp" "keepassxc" "element" "karabiner-elements" "macfuse" "chromium" "orbstack" ];
+    brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" "yabai" "skhd" "ollama" "terraform" ];
+    casks = [ "kitty" "mpv" "gimp" "keepassxc" "element" "karabiner-elements" "macfuse" "chromium" "orbstack" "soduto" ];
   };
 
   users.users."xue".shell = pkgs.bashInteractive;
