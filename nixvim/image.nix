@@ -2,8 +2,8 @@
   programs.nixvim.plugins = {
     image = {
       enable = true;
-      backend = "kitty";
-      integrations.markdown.enabled = true;
+      settings.backend = "kitty";
+      settings.integrations.markdown.enabled = true;
       };
   };
 }
