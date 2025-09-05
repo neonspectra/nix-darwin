@@ -12,8 +12,8 @@
     enable = true;
     onActivation.cleanup = "zap";
     taps = [ "koekeishiya/formulae" ]; # koekeishiya tap needed for yabai and skhd
-    brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" "yabai" "skhd" "claude-code" ];
-    casks = [ "kitty" "mpv" "gimp" "keepassxc" ];
+    brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" "yabai" "skhd" ];
+    casks = [ "kitty" "mpv" "gimp" "keepassxc" "claude-code" ];
   };
 
   system.primaryUser = "neon";
