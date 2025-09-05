@@ -6,7 +6,11 @@
     pkgs.rclone
     pkgs.p7zip
     pkgs.ncdu
+    pkgs.claude-code
   ]; 
+
+  # Override needed for nonfree packages specifically so we can install claude-code above.
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [ "claude-code" ];
 
   homebrew = {
     enable = true;
