@@ -6,6 +6,8 @@
     pkgs.rclone
     pkgs.p7zip
     pkgs.ncdu
+    pkgs.findutils
+    pkgs.git-lfs
   ];
 
   homebrew = {
@@ -13,7 +15,7 @@
     onActivation.cleanup = "zap";
     taps = [ "koekeishiya/formulae" ]; # koekeishiya tap needed for yabai and skhd
     brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" "yabai" "skhd" "ollama" "terraform" ];
-    casks = [ "kitty" "mpv" "gimp" "keepassxc" "element" "karabiner-elements" "macfuse" "chromium" "orbstack" "soduto" ];
+    casks = [ "kitty" "mpv" "gimp" "keepassxc" "element" "karabiner-elements" "macfuse" "chromium" "orbstack" "soduto" "audacity" "inkscape" "kdenlive" "kid3" "transmission" ];
   };
 
   system.primaryUser = "xue";
