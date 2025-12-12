@@ -6,6 +6,7 @@
     pkgs.rclone
     pkgs.p7zip
     pkgs.ncdu
+    pkgs.nodejs
   ]; 
 
   homebrew = {
