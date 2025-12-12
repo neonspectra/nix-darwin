@@ -7,6 +7,8 @@
     pkgs.p7zip
     pkgs.ncdu
     pkgs.nodejs
+    pkgs.findutils
+    pkgs.git-lfs
   ]; 
 
   homebrew = {
