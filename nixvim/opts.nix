@@ -5,5 +5,6 @@
     shiftwidth = 2;
     spelllang = "en_gb";
     mouse = "";
+    clipboard = "unnamedplus";
   };
 }
