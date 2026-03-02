@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   environment.systemPackages = [
     pkgs.vim
@@ -10,7 +10,11 @@
     pkgs.findutils
     pkgs.git-lfs
     pkgs.asdf
+    pkgs.terraform
   ]; 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+             "terraform"
+           ];
 
   homebrew = {
     enable = true;
