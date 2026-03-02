@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   environment.systemPackages = [
     pkgs.vim
@@ -9,14 +9,19 @@
     pkgs.nodejs
     pkgs.findutils
     pkgs.git-lfs
+    pkgs.asdf
+    pkgs.terraform
   ]; 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+             "terraform"
+           ];
 
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
     taps = [ "koekeishiya/formulae" ]; # koekeishiya tap needed for yabai and skhd
-    brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" "yabai" "skhd" ];
-    casks = [ "kitty" "mpv" "gimp" "keepassxc" ];
+    brews = [ "cowsay" "rsync" "gnupg" "pinentry-mac" "grep" "yabai" "skhd" "ansible" ];
+    casks = [ "kitty" "mpv" "gimp" "keepassxc" "1password-cli" ];
   };
 
   system.primaryUser = "neon";
